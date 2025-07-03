@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Company Name Cleaner",
+  "version": "1.0",
+  "description": "Cleans and shortens company names based on specific rules.",
+  "permissions": [],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
