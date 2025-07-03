@@ -5,14 +5,12 @@
 
   function logEvent(type) {
     chrome.storage.local.get({ visits: [] }, (data) => {
-      const visits = data.visits;
-      visits.push({ url: profileUrl, type, time: visitTime, date: today });
-      chrome.storage.local.set({ visits });
+      // Keep only today's logs
+      const todayVisits = data.visits.filter(v => v.date === today);
+      todayVisits.push({ url: profileUrl, type, time: visitTime, date: today });
+      chrome.storage.local.set({ visits: todayVisits });
     });
   }
-
-  // Always log profile visit
-  logEvent("visit");
 
   function handleConnectButtons() {
     // 1. Standard Connect button
@@ -26,7 +24,7 @@
       });
     }
 
-    // 2. Dropdown "Connect" in More menu
+    // 2. "Connect" in More dropdown
     const allConnectItems = Array.from(document.querySelectorAll("*"))
       .filter(el =>
         el.innerText &&
@@ -42,13 +40,14 @@
     });
   }
 
-  // Observe DOM changes for dynamic LinkedIn loading
+  // Always log profile visit (after pruning old logs)
+  logEvent("visit");
+
   const observer = new MutationObserver(() => {
     handleConnectButtons();
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // Initial check
   handleConnectButtons();
 })();
