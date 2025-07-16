@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Name Cleaner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 350px; /* Slightly wider for textarea */
+            padding: 15px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: calc(100% - 20px);
+            height: 120px; /* Give it some height for multiple lines */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical; /* Allow vertical resizing */
+        }
+        #result-container { /* New container for result and button */
+            position: relative; /* Needed for absolute positioning of the button */
+            margin-bottom: 15px;
+        }
+        #result {
+            font-size: 1em;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #e9f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            min-height: 50px;
+            border: 1px dashed #a8dcfc;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding-right: 45px; /* Make space for the copy button */
+        }
+        #copyButton {
+            position: absolute;
+            top: 5px; /* Adjust as needed */
+            right: 5px; /* Adjust as needed */
+            background-color: #28a745; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            opacity: 0.8; /* Make it slightly transparent when not hovered */
+            transition: opacity 0.2s ease-in-out;
+        }
+        #copyButton:hover {
+            opacity: 1; /* Fully opaque on hover */
+        }
+        #copyButton:active {
+            background-color: #218838; /* Darker green when clicked */
+        }
+    </style>
+</head>
+<body>
+    <h2>Name Cleaner</h2>
+    <textarea id="companyInput" placeholder="Enter company names, one per line..." autofocus></textarea>
+    <div id="result-container">
+        <div id="result"></div>
+        <button id="copyButton" title="Copy to clipboard">Copy</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
