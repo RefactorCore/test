@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Name Cleaner</h1>
+        <textarea id="companyInput" placeholder="The Coca-Cola Company&#10;A W Company&#10;International Business Machines"></textarea>
+
+        <div class="controls">
+            <strong>Cleaning Rule:</strong>
+            <div id="ruleSelector" class="rule-options">
+                <label><input type="radio" name="rule" value="first-word"> First Word</label>
+                <label><input type="radio" name="rule" value="initials-only"> Initials</label>
+                <label><input type="radio" name="rule" value="abbreviation"> Abbreviation</label>
+                <label><input type="radio" name="rule" value="custom-shortcut"> Shortcut</label>
+            </div>
+        </div>
+        
+        <h2>Result:</h2>
+        <pre id="resultDiv"></pre>
+        <button id="copyButton">Copy Results</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
